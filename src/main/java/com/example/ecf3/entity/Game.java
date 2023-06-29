@@ -19,7 +19,14 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    // partie terminée
     private Boolean played;
-    @ManyToMany(mappedBy = "games", fetch = FetchType.EAGER)
+    //joueur 1 gagnant
+    private Boolean p1Win;
+    //joueur 2 gagnant
+    private Boolean p2Win;
+    //match nul
+    private Boolean draw;
+    @ManyToMany
     private List<Player> players;
 }

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Gestion des matches</title>
+<head th:replace="~{fragments/base.html :: head}">
 </head>
+<header th:replace="~{fragments/base.html::header}"></header>
 <body>
-
+    <a th:if="${@loginService.isAdmin()}" th:href="@{/games/create}" class="btn btn-primary my-4">Créer une partie</a>
 </body>
 </html>

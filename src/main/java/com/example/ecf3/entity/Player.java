@@ -23,6 +23,5 @@ public class Player {
     private String password;
     private Boolean isAdmin;
     @ManyToMany (fetch = FetchType.EAGER)
-    @JoinTable(name = "player_game", joinColumns = @JoinColumn(name = "player_id"), inverseJoinColumns = @JoinColumn(name = "game_id"))
     private List<Game> games;
 }

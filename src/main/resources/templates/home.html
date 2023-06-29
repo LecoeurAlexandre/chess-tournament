@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="~{fragments/base.html :: head}">
-    <meta charset="UTF-8">
-    <title>Accueil</title>
-</head>
-<header th:replace="~{fragments/base.html::header}"></header>
+<head th:replace="~{fragments/base.html :: head}"></head>
 <body>
-
+    <header th:replace="~{fragments/base.html::header}"></header>
+    <main>
+        <h2>Parties à jouer</h2>
+        <table class="table table-striped table-dark text-center table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Numéro</th>
+                <th scope="col">Joueur 1</th>
+                <th scope="col">Joueur 2</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="game : ${notPlayedGames}">
+                <td th:text="${game.getId()}"></td>
+                <td th:text="${game.getPlayers().get(0).getPseudo()}"></td>
+                <td th:text="${game.getPlayers().get(1).getPseudo()}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <h2>Parties jouées</h2>
+        <table class="table table-striped table-dark text-center table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Numéro</th>
+                <th scope="col">Joueur 1</th>
+                <th scope="col">Joueur 2</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="game : ${playedGames}">
+                <td th:text="${game.getId()}"></td>
+                <td th:text="${game.getPlayers().get(0).getPseudo()}"></td>
+                <td th:text="${game.getPlayers().get(1).getPseudo()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
 </body>
 </html>
