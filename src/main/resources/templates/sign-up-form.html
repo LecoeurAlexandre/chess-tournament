@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/base.html :: head}">
+</head>
+<header th:replace="~{fragments/base.html::header}"></header>
+<body>
+    <form th:action="@{/user/signup}" method="post">
+        <div>
+            <input type="text" name="lastName" placeholder="Nom" />
+        </div>
+        <div>
+            <input type="text" name="firstName" placeholder="Prénom" />
+        </div>
+        <div>
+            <input type="text" name="pseudo" placeholder="Pseudo" />
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="mot de passe" />
+        </div>
+        <div>
+            <button>valider</button>
+        </div>
+    </form>
+</body>
+</html>
