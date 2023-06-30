@@ -43,7 +43,7 @@ public class GameController {
     @PostMapping("/games/create")
     public String createGame(@RequestParam String player1, @RequestParam String player2) throws SamePlayerException {
         if(gameservice.createGame(player1, player2)) {
-            return "redirect:/user/profile";
+            return "redirect:/games";
         }
         return null;
     }

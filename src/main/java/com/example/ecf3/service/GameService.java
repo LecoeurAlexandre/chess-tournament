@@ -15,17 +15,22 @@ public class GameService {
     private GameRepository gameRepository;
     @Autowired
     private PlayerService playerService;
+    @Autowired
+    private LoginService loginService;
 
     public boolean createGame(String idPlayer1, String idPlayer2) throws SamePlayerException {
-        if (idPlayer1.equals(idPlayer2)){
-            throw new SamePlayerException();
-        } else {
-            List<Player> gamePlayers = (List<Player>) playerService.getPlayersById(idPlayer1, idPlayer2);
-            Game game = Game.builder().played(false).p1Win(false).p2Win(false).draw(false).players(gamePlayers).build();
-            System.out.println(game);
-            gameRepository.save(game);
+        if (loginService.isAdmin()) {
+            if (idPlayer1.equals(idPlayer2)){
+                throw new SamePlayerException();
+            } else {
+                List<Player> gamePlayers = (List<Player>) playerService.getPlayersById(idPlayer1, idPlayer2);
+                Game game = Game.builder().played(false).p1Win(false).p2Win(false).draw(false).players(gamePlayers).build();
+                System.out.println(game);
+                gameRepository.save(game);
+            }
+            return true;
         }
-        return true;
+        return false;
     }
     public List<Game> getGames() {
         return (List<Game>)gameRepository.findAll();

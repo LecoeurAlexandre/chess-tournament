@@ -8,7 +8,7 @@
         <table class="table table-striped table-dark text-center table-bordered">
             <thead>
             <tr>
-                <th scope="col">Numéro</th>
+                <th scope="col">Numéro de partie</th>
                 <th scope="col">Joueur 1</th>
                 <th scope="col">Joueur 2</th>
             </tr>
@@ -28,6 +28,7 @@
                 <th scope="col">Numéro</th>
                 <th scope="col">Joueur 1</th>
                 <th scope="col">Joueur 2</th>
+                <th scope="col">Vainqueur</th>
             </tr>
             </thead>
             <tbody>
@@ -35,6 +36,7 @@
                 <td th:text="${game.getId()}"></td>
                 <td th:text="${game.getPlayers().get(0).getPseudo()}"></td>
                 <td th:text="${game.getPlayers().get(1).getPseudo()}"></td>
+                <td></td>
             </tr>
             </tbody>
         </table>

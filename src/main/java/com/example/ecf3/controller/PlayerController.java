@@ -1,5 +1,7 @@
 package com.example.ecf3.controller;
 
+import com.example.ecf3.exception.EmptyFieldsException;
+import com.example.ecf3.exception.NotloggedException;
 import com.example.ecf3.exception.UserExistException;
 import com.example.ecf3.exception.UserNotExistException;
 import com.example.ecf3.service.LoginService;
@@ -7,10 +9,7 @@ import com.example.ecf3.service.PlayerService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
@@ -59,5 +58,18 @@ public class PlayerController {
         ModelAndView mv = new ModelAndView("profile");
         mv.addObject("player", loginService.getInfosPlayer());
         return mv;
+    }
+    @GetMapping("edit/{id}")
+    public ModelAndView editProfile(@PathVariable Integer id) throws UserNotExistException {
+        ModelAndView mv = new ModelAndView("sign-up-form");
+        mv.addObject("player", playerService.getPlayerById(id));
+        return mv;
+    }
+    @PostMapping("edit/{id}")
+    public String editProfile(@PathVariable Integer id, @RequestParam String lastName, String firstName, String pseudo, String password) throws NotloggedException, UserExistException, EmptyFieldsException {
+        if(playerService.updatePlayer(id, lastName, firstName, pseudo, password)){
+            return "redirect:/user/profile";
+        }
+        return null;
     }
 }

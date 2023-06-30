@@ -13,6 +13,9 @@
             <li class="list-group-item" th:text="${player.getFirstName()}"></li>
             <li class="list-group-item" th:text="${player.getPseudo()}"></li>
         </ul>
+        <div class="card-footer">
+            <a th:href="@{/user/edit/{id}(id = ${player.getId()})}" class="btn btn-outline-info">Modifier profil</a>
+        </div>
     </div>
 </body>
 </html>

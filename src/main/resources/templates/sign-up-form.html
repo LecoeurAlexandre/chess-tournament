@@ -4,18 +4,18 @@
 </head>
 <header th:replace="~{fragments/base.html::header}"></header>
 <body>
-    <form th:action="@{/user/signup}" method="post">
+    <form th:action="@{#}" method="post">
         <div>
-            <input type="text" name="lastName" placeholder="Nom" />
+            <input type="text" name="lastName" placeholder="Nom" th:value="${player!=null}? ${player.getLastName()} : ''"/>
         </div>
         <div>
-            <input type="text" name="firstName" placeholder="Prénom" />
+            <input type="text" name="firstName" placeholder="Prénom" th:value="${player!=null}? ${player.getFirstName()} : ''"/>
         </div>
         <div>
-            <input type="text" name="pseudo" placeholder="Pseudo" />
+            <input type="text" name="pseudo" placeholder="Pseudo" th:value="${player!=null}? ${player.getPseudo()} : ''"/>
         </div>
         <div>
-            <input type="password" name="password" placeholder="mot de passe" />
+            <input type="password" name="password" placeholder="mot de passe" th:value="${player!=null}? ${player.getPassword()} : ''"/>
         </div>
         <div>
             <button>valider</button>

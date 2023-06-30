@@ -14,7 +14,7 @@
                     </select>
                 </div>
                 <div class="mt-3">
-                    <label for="player2">Joueur 1</label>
+                    <label for="player2">Joueur 2</label>
                     <select name="player2"  id="player2" multiple class="form-control">
                         <option th:each="player : ${players}" th:value="${player.getId()}" th:text="${player.getLastName()}"></option>
                     </select>
